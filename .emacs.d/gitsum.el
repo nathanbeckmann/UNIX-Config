@@ -205,7 +205,7 @@ A numeric argument serves as a repeat count."
          (buffer (or (and gitsum-reuse-buffer (gitsum-find-buffer dir))
                      (generate-new-buffer "*gitsum*"))))
     (switch-to-buffer buffer)
-    (cd (concat "./" (substring (shell-command-to-string "git-rev-parse --show-cdup") 0 -1)))
+    (cd (concat "./" (substring (shell-command-to-string "git rev-parse --show-cdup") 0 -1)))
     (gitsum-diff-mode)
     (set (make-local-variable 'list-buffers-directory) dir)
     (gitsum-refresh)))
