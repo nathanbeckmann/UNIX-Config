@@ -11,6 +11,17 @@
 (autoload 'git-blame-mode "git-blame"
           "Minor mode for incremental blame for Git." t)
 
+;; Scala Mode
+
+(let ((path (expand-file-name "~/.emacs.d/scala")))
+  (setq load-path (cons path load-path))
+  (load "scala-mode-auto.el"))
+
+(defun scala-turnoff-indent-tabs-mode ()
+  (setq indent-tabs-mode nil))
+
+(add-hook 'scala-mode-hook 'scala-turnoff-indent-tabs-mode)
+
 ;; Auto generated?
 
 (autoload 'run-tea "~/bin/tea"
