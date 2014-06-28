@@ -42,6 +42,12 @@
 (setq display-time-and-date t)
 (display-time)
 
+;; Buffer behavior
+
+(setq-default display-buffer-reuse-frames t)
+(setq-default split-width-threshold 200)
+(setq-default split-height-threshold nil)
+
 ;; Formatting
 
 (setq-default indent-tabs-mode nil)
@@ -56,3 +62,15 @@
 
 (add-to-list 'load-path "~/tools/go/misc/emacs" t)
 (require 'go-mode-load)
+
+;; Recompile
+
+(defvar my-keys-minor-mode-map (make-keymap) "my-keys-minor-mode keymap.")
+
+(define-key my-keys-minor-mode-map (kbd "C-c C-r") 'recompile)
+
+(define-minor-mode my-keys-minor-mode
+  "A minor mode so that my key settings override annoying major modes."
+  t " my-keys" 'my-keys-minor-mode-map)
+
+(my-keys-minor-mode 1)
