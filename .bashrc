@@ -1,6 +1,6 @@
 export EDITOR="emacs -nw"
 
 alias ls="ls --color=auto"
-alias emacs="emacs -nw"
+#alias emacs="emacs -nw"
 
 source ~/.bashrc.path
