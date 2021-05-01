@@ -62,7 +62,7 @@ Suitable for inclusion in `c-offsets-alist'."
 (defconst google-c-style
   `((c-recognize-knr-p . nil)
     (c-enable-xemacs-performance-kludge-p . t) ; speed up indentation in XEmacs
-    (c-basic-offset . 4)
+    (c-basic-offset . 2)
     (indent-tabs-mode . nil)
     (c-comment-only-line-offset . 0)
     (c-hanging-braces-alist . ((defun-open after)
@@ -97,6 +97,10 @@ Suitable for inclusion in `c-offsets-alist'."
                        list-close-comma
                        scope-operator))
     (c-offsets-alist . ((arglist-intro google-c-lineup-expression-plus-4)
+                        (cpp-define-intro ++)
+                        (brace-list-intro ++)
+                        (statement-block-intro ++)
+                        (defun-block-intro ++)
                         (func-decl-cont . ++)
                         (member-init-intro . ++)
                         (inher-intro . ++)
@@ -114,9 +118,9 @@ Suitable for inclusion in `c-offsets-alist'."
                              'c-lineup-assignments)
                           ++))
                         (label . /)
-                        (case-label . +)
-                        (statement-case-open . +)
-                        (statement-case-intro . +) ; case w/o {
+                        (case-label . ++)
+                        (statement-case-open . ++)
+                        (statement-case-intro . ++) ; case w/o {
                         (access-label . -)
                         (inclass . ++)
                         (innamespace . 0))))

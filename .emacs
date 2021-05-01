@@ -1,46 +1,32 @@
 ;;
 
-(load-file "~/.emacs.d/mathematica.el")
+;; (load-file "~/.emacs.d/mathematica.el")
 (load-file "~/.emacs.d/gitsum.el")
 (load-file "~/.emacs.d/google-c-style.el")
-;; (require 'magit)
 
-(setq load-path (cons (expand-file-name "~/share/emacs/site-lisp/") load-path))
-(require 'vc-git)
-(when (featurep 'vc-git) (add-to-list 'vc-handled-backends 'git))
-(require 'git)
-(autoload 'git-blame-mode "git-blame"
-          "Minor mode for incremental blame for Git." t)
+;; ;; Bluespec
 
-;; Scala Mode
-
-(let ((path (expand-file-name "~/.emacs.d/scala")))
-  (setq load-path (cons path load-path))
-  (load "scala-mode-auto.el"))
-
-(defun scala-turnoff-indent-tabs-mode ()
-  (setq indent-tabs-mode nil))
-
-(add-hook 'scala-mode-hook 'scala-turnoff-indent-tabs-mode)
-
-;; Auto generated?
-
-(autoload 'run-tea "~/bin/tea"
-          "Run an inferior T process."
-          t)
-
-(autoload 'run-asim "~/bin/asim"
-          "Run an inferior T/ASIM process."
-          t)
-
-(setq auto-mode-alist
-      (append
-       (list '("\\.t$" . scheme-mode))
-       auto-mode-alist))
+;; (setq load-path (append (list (concat (getenv "BLUESPECDIR") "/../util/emacs")) load-path))
+;; ;; User customization for BSV mode
+;; (setq bsv-indent-level             4
+;;       bsv-indent-level-module      4
+;;       bsv-indent-level-declaration 4
+;;       bsv-indent-level-behavioral  4
+;;       bsv-indent-level-directive   1
+;;       bsv-case-indent              2
+;;       bsv-auto-newline             nil
+;;       bsv-auto-indent-on-newline   t
+;;       bsv-tab-always-indent        t
+;;       bsv-auto-endcomments         t
+;;       bsv-minimum-comment-distance 40
+;;       bsv-indent-begin-after-if    t
+;;       bsv-auto-lineup              'declarations
+;;       bsv-highlight-p1800-keywords nil
+;;       bsv-linter		   "my_lint_shell_command")
+;; (load "bsv-mode") (add-hook 'bsv-mode-hook `font-lock-fontify-buffer)
+;; (add-to-list 'auto-mode-alist '("\\.bsv\\'" . bsv-mode))
 
 (setq inhibit-startup-message t)
-(setq display-time-and-date t)
-(display-time)
 
 ;; Buffer behavior
 
@@ -51,17 +37,12 @@
 ;; Formatting
 
 (setq-default indent-tabs-mode nil)
-;; (setq-default c-default-style "bsd")
+(setq-default c-default-style "bsd")
 (setq-default c-basic-offset 4)
 
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 (add-hook 'c-mode-common-hook 'google-set-c-style)
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)
-
-;; Go
-
-(add-to-list 'load-path "~/tools/go/misc/emacs" t)
-(require 'go-mode-load)
 
 ;; Recompile
 

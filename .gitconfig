@@ -1,9 +1,7 @@
 [user]
+	email = beckmann@cs.cmu.edu
 	name = Nathan Beckmann
-	email = beckmann@mit.edu
-[color]
-	ui = auto
-	diff = auto
-	status = auto
 [merge]
 	conflictstyle = diff3
+[push]
+	default = simple
